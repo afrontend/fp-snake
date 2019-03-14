@@ -4,16 +4,17 @@
 ## Installation
 
 ```sh
-$ npm install --save fp-snake
+git clone https://github.com/afrontend/fp-tetris.git
+cd fp-tetris
+npm install
 ```
 
-## Usage
+## Run
 
-```js
-const fpSnake = require('fp-snake');
-
-fpSnake('Rainbow');
+```sh
+$ npm start
 ```
+
 ## License
 
 MIT © [Bob Hwang](https://agvim.wordpress.com)
