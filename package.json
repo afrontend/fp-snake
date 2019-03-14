@@ -59,7 +59,8 @@
   },
   "scripts": {
     "pretest": "eslint .",
-    "test": "jest"
+    "test": "jest",
+    "start": "node ./src/example.js"
   },
   "repository": "https://github.com/afrontend/fp-snake.git",
   "jest": {
