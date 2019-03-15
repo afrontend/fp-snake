@@ -1,5 +1,8 @@
 #!/usr/bin/env node
+const clear = require('clear');
+const keypress = require('keypress');
 const program = require('commander');
+const fpSnake = require('../lib/index.js');
 const pkg = require('../package.json');
 
 program
@@ -7,7 +10,40 @@ program
   .option('-f, --full', 'terminal full size')
   .parse(process.argv);
 
-const startGame = (rows = 17, columns = 15) => {
+const startGame = (rows = 15, columns = 15) => {
+  const global = {
+    state: fpSnake.initSnakeTable(rows, columns)
+  };
+
+  keypress(process.stdin);
+
+  process.stdin.on('keypress', function (ch, key) {
+    if (key && key.ctrl && key.name === 'c') {
+      process.exit();
+    }
+    if (key && key.name === 'q') {
+      process.exit();
+    }
+    if (key) {
+      console.log(key.name);
+      global.state = fpSnake.keySnakeTable(key.name, global.state);
+    }
+  });
+
+  process.stdin.setRawMode(true);
+  process.stdin.resume();
+
+  const format = (ary) => {
+    return ary.map((r) => (
+      r.map((item) => (item.color === 'grey'? ' ' : '■')).join(' ')
+    ))
+  };
+
+  global.timer = setInterval(() => {
+    global.state = fpSnake.moveSnakeTable(global.state);
+    clear();
+    console.log(format(fpSnake.joinSnakeTable(global.state)));
+  }, 300);
 }
 
 const activate = (program) => {
