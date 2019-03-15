@@ -4,8 +4,8 @@
 ## Installation
 
 ```sh
-git clone https://github.com/afrontend/fp-tetris.git
-cd fp-tetris
+git clone https://github.com/afrontend/fp-snake.git
+cd fp-snake
 npm install
 ```
 
