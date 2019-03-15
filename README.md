@@ -1,5 +1,5 @@
 # fp-snake [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
-> library for fp-snake-game
+> library for [fp-snake-game](https://github.com/afrontend/fp-snake-game)
 
 ## Installation
 
