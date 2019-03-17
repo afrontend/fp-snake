@@ -1,6 +1,10 @@
 # fp-snake [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 > library for [fp-snake-game](https://github.com/afrontend/fp-snake-game)
 
+
+![console snake screenshot](https://agvim.files.wordpress.com/2019/03/fp-snake.png "console snake screenshot")
+
+
 ## Installation
 
 ```sh
