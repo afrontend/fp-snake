@@ -37,14 +37,16 @@ const startGame = (rows = 15, columns = 15) => {
 
   global.timer = setInterval(() => {
     global.state = fpSnake.moveSnakeTable(global.state);
-    clear();
+    if (!program.full) {
+      clear();
+    }
     console.log(format(fpSnake.joinSnakeTable(global.state)));
-  }, 300);
+  }, 200);
 };
 
 const activate = program => {
   if (program.full) {
-    startGame(process.stdout.rows - 2, process.stdout.columns / 2 - 4);
+    startGame(process.stdout.rows - 1, process.stdout.columns / 2 - 4);
   } else {
     startGame();
   }
