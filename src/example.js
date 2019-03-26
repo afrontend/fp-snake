@@ -12,7 +12,7 @@ program
 
 const startGame = (rows = 15, columns = 15) => {
   const global = {
-    state: fpSnake.initSnakeTable(rows, columns)
+    state: fpSnake.init(rows, columns)
   };
 
   keypress(process.stdin);
@@ -25,7 +25,7 @@ const startGame = (rows = 15, columns = 15) => {
       process.exit();
     }
     if (key) {
-      global.state = fpSnake.keySnakeTable(key.name, global.state);
+      global.state = fpSnake.key(key.name, global.state);
     }
   });
 
@@ -36,11 +36,11 @@ const startGame = (rows = 15, columns = 15) => {
     ary.map(r => r.map(item => (item.color === "grey" ? " " : "■")).join(" "));
 
   global.timer = setInterval(() => {
-    global.state = fpSnake.moveSnakeTable(global.state);
+    global.state = fpSnake.tick(global.state);
     if (!program.full) {
       clear();
     }
-    console.log(format(fpSnake.joinSnakeTable(global.state)));
+    console.log(format(fpSnake.join(global.state)));
   }, 200);
 };
 
