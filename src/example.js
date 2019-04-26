@@ -3,7 +3,7 @@ const _ = require("lodash");
 const clear = require("clear");
 const keypress = require("keypress");
 const program = require("commander");
-const fpSnake = require("../lib/index.js");
+const game = require("../lib/index.js");
 const pkg = require("../package.json");
 
 program
@@ -27,7 +27,7 @@ const load = global => {
 
 const startGame = (rows = 15, columns = 15) => {
   const global = {
-    state: fpSnake.init(rows, columns)
+    state: game.init(rows, columns)
   };
 
   keypress(process.stdin);
@@ -50,7 +50,7 @@ const startGame = (rows = 15, columns = 15) => {
       process.exit();
     }
     if (key) {
-      global.state = fpSnake.key(key.name, global.state);
+      global.state = game.key(key.name, global.state);
     }
   });
 
@@ -61,11 +61,11 @@ const startGame = (rows = 15, columns = 15) => {
     ary.map(r => r.map(item => getMark(item)).join(" ")).join("\r\n");
 
   global.timer = setInterval(() => {
-    global.state = fpSnake.tick(global.state);
+    global.state = game.tick(global.state);
     if (!program.full) {
       clear();
     }
-    console.log(format(fpSnake.join(global.state)));
+    console.log(format(game.join(global.state)));
   }, 200);
 };
 
