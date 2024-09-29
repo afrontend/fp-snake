@@ -76,7 +76,7 @@
     "braces": "^3.0.2",
     "clear": "^0.1.0",
     "commander": "^2.19.0",
-    "fp-panel": "0.0.4",
+    "fp-panel": "^0.0.9",
     "handlebars": "^4.7.6",
     "js-yaml": "^3.13.1",
     "keypress": "^0.2.1",
