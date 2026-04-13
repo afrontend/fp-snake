@@ -2,7 +2,7 @@
 
 > Functional snake game library for [fp-snake-game](https://github.com/afrontend/fp-snake-game)
 
-![console snake screenshot](https://agvim.files.wordpress.com/2019/03/fp-snake.png "console snake screenshot")
+![demo](https://github.com/afrontend/fp-snake/releases/download/demo-assets/demo.gif)
 
 ## Quick start
 
