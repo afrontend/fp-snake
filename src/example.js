@@ -26,16 +26,19 @@ const dump = state => {
   console.log(JSON.stringify(state));
 };
 
-const save = global => {
-  global.savedState = _.cloneDeep(global.state);
+const save = ctx => {
+  ctx.savedState = _.cloneDeep(ctx.state);
 };
 
-const restore = global => {
-  global.state = global.savedState;
+const restore = ctx => {
+  ctx.state = ctx.savedState;
 };
+
+const format = ary =>
+  ary.map(r => r.map(item => getMark(item)).join(" ")).join("|\r\n");
 
 const startGame = (rows = 15, columns = 15) => {
-  const global = {
+  const ctx = {
     state: game.init(rows, columns)
   };
 
@@ -49,32 +52,29 @@ const startGame = (rows = 15, columns = 15) => {
       process.exit();
     }
     if (key && key.name === "s") {
-      save(global);
+      save(ctx);
     }
     if (key && key.name === "l") {
-      restore(global);
+      restore(ctx);
     }
     if (key && key.ctrl && key.name === "d") {
-      dump(global.state);
+      dump(ctx.state);
       process.exit();
     }
     if (key) {
-      global.state = game.key(key.name, global.state);
+      ctx.state = game.key(key.name, ctx.state);
     }
   });
 
   process.stdin.setRawMode(true);
   process.stdin.resume();
 
-  const format = ary =>
-    ary.map(r => r.map(item => getMark(item)).join(" ")).join("|\r\n");
-
-  global.timer = setInterval(() => {
-    global.state = game.tick(global.state);
+  ctx.timer = setInterval(() => {
+    ctx.state = game.tick(ctx.state);
     if (!program.full) {
       clear();
     }
-    console.log(format(game.join(global.state)));
+    console.log(format(game.join(ctx.state)));
   }, 200);
 };
 

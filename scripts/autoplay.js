@@ -61,10 +61,10 @@ function parseBoard(state) {
 // ── BFS ───────────────────────────────────────────────────────────────────────
 
 const DIRS = [
-  { key: "up",    dr: -1, dc:  0 },
-  { key: "down",  dr:  1, dc:  0 },
-  { key: "left",  dr:  0, dc: -1 },
-  { key: "right", dr:  0, dc:  1 },
+  { key: "up", dr: -1, dc: 0 },
+  { key: "down", dr: 1, dc: 0 },
+  { key: "left", dr: 0, dc: -1 },
+  { key: "right", dr: 0, dc: 1 }
 ];
 
 function bfs(start, goal, occupied, rows, cols) {
