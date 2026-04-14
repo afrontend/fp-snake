@@ -5,13 +5,22 @@ const keypress = require("keypress");
 const program = require("commander");
 const game = require("../lib/index.js");
 const pkg = require("../package.json");
+const chalk = require("chalk");
 
 program
   .version(pkg.version)
   .option("-f, --full", "terminal full size")
   .parse(process.argv);
 
-const getMark = item => (item.color === "grey" ? " " : "■");
+function getColorItem(item, char) {
+  if (chalk[item.color]) {
+    return chalk[item.color](char);
+  }
+  return chalk.blue(char);
+}
+
+const getMark = item =>
+  item.color === "grey" ? getColorItem(item, ".") : getColorItem(item, "■");
 
 const dump = state => {
   console.log(JSON.stringify(state));

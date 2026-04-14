@@ -22,8 +22,7 @@
     "game"
   ],
   "devDependencies": {
-    "coveralls": "^3.0.2",
-    "eslint": "^5.9.0",
+    "eslint": "^9.32.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-config-xo": "^0.25.0",
     "eslint-plugin-prettier": "^3.0.0",
@@ -46,26 +45,11 @@
       "git add"
     ]
   },
-  "eslintConfig": {
-    "extends": [
-      "xo",
-      "prettier"
-    ],
-    "env": {
-      "jest": true,
-      "node": true
-    },
-    "rules": {
-      "prettier/prettier": "error"
-    },
-    "plugins": [
-      "prettier"
-    ]
-  },
   "scripts": {
     "pretest": "eslint .",
     "test": "jest",
-    "start": "node ./src/example.js"
+    "start": "node ./src/example.js",
+    "release": "bash scripts/make-demo.sh"
   },
   "repository": "https://github.com/afrontend/fp-snake.git",
   "jest": {
@@ -74,9 +58,10 @@
   "license": "MIT",
   "dependencies": {
     "braces": "^3.0.2",
+    "chalk": "^2.4.2",
     "clear": "^0.1.0",
     "commander": "^2.19.0",
-    "fp-panel": "0.0.4",
+    "fp-panel": "^0.0.9",
     "handlebars": "^4.7.6",
     "js-yaml": "^3.13.1",
     "keypress": "^0.2.1",
