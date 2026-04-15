@@ -4,7 +4,7 @@
 
 ![demo](https://github.com/afrontend/fp-snake/releases/download/demo-assets/demo.gif)
 
-## Quick start
+## Just run
 
 ```sh
 npx fp-snake
@@ -16,7 +16,7 @@ Use `--full` to fill the entire terminal window:
 npx fp-snake --full
 ```
 
-## Run from source
+## Run with source
 
 ```sh
 git clone https://github.com/afrontend/fp-snake.git
@@ -25,13 +25,19 @@ npm install
 npm start
 ```
 
+### CLI options
+
+| Option | Description |
+|--------|-------------|
+| `-f, --full` | Use full terminal size for the board |
+
 ## Controls
 
 | Key | Action |
-|---|---|
+|-----|--------|
 | `←` `↑` `→` `↓` | Move snake |
-| `Space` | Pause / Resume |
-| `q` | Quit |
+| `Space` | Pause / resume |
+| `q` / `Ctrl+C` | Quit |
 | `s` | Save state |
 | `l` | Load saved state |
 
