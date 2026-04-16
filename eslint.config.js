@@ -22,15 +22,15 @@ module.exports = [
         setInterval: "readonly",
         clearInterval: "readonly",
         setTimeout: "readonly",
-        clearTimeout: "readonly"
-      }
+        clearTimeout: "readonly",
+      },
     },
     plugins: {
-      prettier: prettierPlugin
+      prettier: prettierPlugin,
     },
     rules: {
-      "prettier/prettier": "error"
-    }
+      "prettier/prettier": "error",
+    },
   },
   {
     files: ["**/*.test.js", "**/__tests__/**/*.js"],
@@ -44,8 +44,8 @@ module.exports = [
         beforeEach: "readonly",
         afterEach: "readonly",
         beforeAll: "readonly",
-        afterAll: "readonly"
-      }
-    }
-  }
+        afterAll: "readonly",
+      },
+    },
+  },
 ];

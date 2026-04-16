@@ -15,10 +15,10 @@ const MAX_TICKS = 2000;
 function getColorItem(item, char) {
   return chalk[item.color] ? chalk[item.color](char) : chalk.blue(char);
 }
-const getMark = item =>
+const getMark = (item) =>
   item.color === "grey" ? getColorItem(item, ".") : getColorItem(item, "■");
-const format = ary =>
-  ary.map(r => r.map(item => getMark(item)).join(" ")).join("|\r\n");
+const format = (ary) =>
+  ary.map((r) => r.map((item) => getMark(item)).join(" ")).join("|\r\n");
 
 // ── Board parsing ─────────────────────────────────────────────────────────────
 
@@ -64,7 +64,7 @@ const DIRS = [
   { key: "up", dr: -1, dc: 0 },
   { key: "down", dr: 1, dc: 0 },
   { key: "left", dr: 0, dc: -1 },
-  { key: "right", dr: 0, dc: 1 }
+  { key: "right", dr: 0, dc: 1 },
 ];
 
 function bfs(start, goal, occupied, rows, cols) {
@@ -127,7 +127,7 @@ function chooseKey(state) {
 
   if (pathToApple && pathToApple.length > 0) {
     const firstKey = pathToApple[0];
-    const dir = DIRS.find(d => d.key === firstKey);
+    const dir = DIRS.find((d) => d.key === firstKey);
     const nextPos = { row: head.row + dir.dr, col: head.col + dir.dc };
 
     // Simulate occupancy after moving (tail frees up — already excluded above)

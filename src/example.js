@@ -19,27 +19,27 @@ function getColorItem(item, char) {
   return chalk.blue(char);
 }
 
-const getMark = item =>
+const getMark = (item) =>
   item.color === "grey" ? getColorItem(item, ".") : getColorItem(item, "■");
 
-const dump = state => {
+const dump = (state) => {
   console.log(JSON.stringify(state));
 };
 
-const save = ctx => {
+const save = (ctx) => {
   ctx.savedState = _.cloneDeep(ctx.state);
 };
 
-const restore = ctx => {
+const restore = (ctx) => {
   ctx.state = ctx.savedState;
 };
 
-const format = ary =>
-  ary.map(r => r.map(item => getMark(item)).join(" ")).join("|\r\n");
+const format = (ary) =>
+  ary.map((r) => r.map((item) => getMark(item)).join(" ")).join("|\r\n");
 
 const startGame = (rows = 15, columns = 15) => {
   const ctx = {
-    state: game.init(rows, columns)
+    state: game.init(rows, columns),
   };
 
   keypress(process.stdin);
