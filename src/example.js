@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-const _ = require("lodash");
 const clear = require("clear");
 const keypress = require("keypress");
 const { program } = require("commander");
@@ -27,7 +26,7 @@ const dump = (state) => {
 };
 
 const save = (ctx) => {
-  ctx.savedState = _.cloneDeep(ctx.state);
+  ctx.savedState = structuredClone(ctx.state);
 };
 
 const restore = (ctx) => {
