@@ -29,7 +29,7 @@ const save = (ctx) => {
   ctx.savedState = structuredClone(ctx.state);
 };
 
-const restore = (ctx) => {
+const reload = (ctx) => {
   ctx.state = ctx.savedState;
 };
 
@@ -66,7 +66,7 @@ const startGame = (rows = 15, columns = 15) => {
       save(ctx);
     }
     if (key && key.name === "l") {
-      restore(ctx);
+      reload(ctx);
     }
     if (key && key.name === "h") {
       ctx.showHelp = !ctx.showHelp;
