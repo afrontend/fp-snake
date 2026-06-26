@@ -37,9 +37,11 @@ npm start
 |-----|--------|
 | `←` `↑` `→` `↓` | Move snake |
 | `Space` | Pause / resume |
-| `q` / `Ctrl+C` | Quit |
+| `h` | Toggle help |
 | `s` | Save state |
 | `l` | Load saved state |
+| `q` / `Ctrl+C` | Quit |
+| `Ctrl+D` | Dump state (JSON) and quit |
 
 ## Library API
 
