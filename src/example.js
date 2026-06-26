@@ -48,7 +48,7 @@ const HELP_TEXT = [
 ].join("\r\n");
 
 const startGame = (rows = 15, columns = 15) => {
-  const ctx = {
+  const gameCtx = {
     state: game.init(rows, columns),
     showHelp: false,
   };
@@ -60,32 +60,32 @@ const startGame = (rows = 15, columns = 15) => {
       process.exit();
     } else if (key && key.name === "q") {
       process.exit();
-    } else if (key && key.name === "s") {
-      save(ctx);
-    } else if (key && key.name === "l") {
-      reload(ctx);
     } else if (key && key.name === "h") {
-      ctx.showHelp = !ctx.showHelp;
+      gameCtx.showHelp = !gameCtx.showHelp;
+    } else if (key && key.name === "s") {
+      save(gameCtx);
+    } else if (key && key.name === "l") {
+      reload(gameCtx);
     } else if (key && key.ctrl && key.name === "d") {
-      dump(ctx.state);
+      dump(gameCtx.state);
       process.exit();
     } else if (key) {
-      ctx.state = game.key(key.name, ctx.state);
+      gameCtx.state = game.key(key.name, gameCtx.state);
     }
   });
 
   process.stdin.setRawMode(true);
   process.stdin.resume();
 
-  ctx.timer = setInterval(() => {
-    if (!ctx.showHelp) {
-      ctx.state = game.tick(ctx.state);
+  gameCtx.timer = setInterval(() => {
+    if (!gameCtx.showHelp) {
+      gameCtx.state = game.tick(gameCtx.state);
     }
     if (!program.opts().full) {
       clear();
     }
-    console.log(format(game.join(ctx.state)));
-    if (ctx.showHelp) {
+    console.log(format(game.join(gameCtx.state)));
+    if (gameCtx.showHelp) {
       console.log(HELP_TEXT);
     }
   }, 200);
