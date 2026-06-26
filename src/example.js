@@ -25,12 +25,12 @@ const dump = (state) => {
   console.log(JSON.stringify(state));
 };
 
-const save = (ctx) => {
-  ctx.savedState = structuredClone(ctx.state);
+const save = (gameCtx) => {
+  gameCtx.savedState = structuredClone(gameCtx.state);
 };
 
-const reload = (ctx) => {
-  ctx.state = ctx.savedState;
+const reload = (gameCtx) => {
+  gameCtx.state = gameCtx.savedState;
 };
 
 const format = (ary) =>
