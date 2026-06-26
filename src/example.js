@@ -53,6 +53,14 @@ const startGame = (rows = 15, columns = 15) => {
     showHelp: false,
   };
 
+  const render = () => {
+    if (!program.opts().full) clear();
+    console.log(format(game.join(gameCtx.state)));
+    if (gameCtx.showHelp) {
+      console.log(HELP_TEXT);
+    }
+  };
+
   keypress(process.stdin);
 
   process.stdin.on("keypress", (ch, key) => {
@@ -71,6 +79,7 @@ const startGame = (rows = 15, columns = 15) => {
       process.exit();
     } else if (key) {
       gameCtx.state = game.key(key.name, gameCtx.state);
+      render();
     }
   });
 
@@ -81,13 +90,7 @@ const startGame = (rows = 15, columns = 15) => {
     if (!gameCtx.showHelp) {
       gameCtx.state = game.tick(gameCtx.state);
     }
-    if (!program.opts().full) {
-      clear();
-    }
-    console.log(format(game.join(gameCtx.state)));
-    if (gameCtx.showHelp) {
-      console.log(HELP_TEXT);
-    }
+    render();
   }, 200);
 };
 
