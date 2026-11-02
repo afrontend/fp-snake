@@ -28,7 +28,7 @@ ESLint + Prettier are configured in `eslint.config.js`; `pretest` runs ESLint, s
 ## Layout
 
 - `lib/index.js` — the library (CJS, hand-written source, not build output)
-- `lib/__tests__/` — vitest tests; `compatibility.test.js` pins the shared API contract
+- `lib/__tests__/` — vitest tests; `compatibility.test.js` runs the shared contract from `fp-panel/testing` (`runGameContract`) plus the game-specific API checks
 - `src/example.js` — terminal game; uses only Node built-ins (`util.styleText`, `util.parseArgs`, `readline.emitKeypressEvents`, ANSI clear), so the sole runtime dependency is `fp-panel`
 - `scripts/autoplay.js`, `scripts/make-demo.sh` — heuristic autoplay for the demo GIF
 - `docs/` — notes (e.g. heuristic AI vs ML vs LLM)
